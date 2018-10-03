@@ -1,6 +1,6 @@
-insert into course (id, name,created_date,last_updated_date) values (10001,'jpa',sysdate(),sysdate());
-insert into course (id, name,created_date,last_updated_date) values (10002,'hibernate',sysdate(),sysdate());
-insert into course (id, name,created_date,last_updated_date) values (10003,'boot',sysdate(),sysdate());
+insert into course (id, name,created_date,last_updated_date,is_deleted) values (10001,'jpa',sysdate(),sysdate(),false);
+insert into course (id, name,created_date,last_updated_date,is_deleted) values (10002,'hibernate',sysdate(),sysdate(),false);
+insert into course (id, name,created_date,last_updated_date,is_deleted) values (10003,'boot',sysdate(),sysdate(),false);
 
 insert into passport(id,number) values(4001,'E123456');
 insert into passport(id,number) values(4002,'N123456');

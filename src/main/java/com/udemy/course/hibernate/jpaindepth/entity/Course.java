@@ -11,15 +11,20 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.PreRemove;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
 
 /**
  * @author TFNP0469 Elghareb ahmed
  *
  */
 @Entity
+@SQLDelete(sql="update course set is_deleted=true where id=?")
+@Where(clause="is_deleted=false")
 public class Course {
     
     @Id
@@ -40,6 +45,14 @@ public class Course {
     
     @ManyToMany(mappedBy="courses")
     private List<Student> students=new ArrayList<>();
+    
+    private boolean is_deleted;
+    
+    @PreRemove
+    private void preRemove(){
+        this.is_deleted=true;
+    }
+    
     
     protected Course(){}
     public Course(String name){
